@@ -1,3 +1,19 @@
+var one = document.querySelector('.one');
+var two = document.querySelector('.two');
+var three = document.querySelector('.three');
+var four = document.querySelector('.four');
+var five = document.querySelector('.five');
+var six = document.querySelector('.six');
+var seven = document.querySelector('.seven');
+var eight = document.querySelector('.eight');
+var nine = document.querySelector('.nine');
+var ten = document.querySelector('.ten');
+
+
+
+
+
+
 // Here are the 100 most popular words in English, as totally
 // stolen from here: https://gist.github.com/gravitymonkey/2406023
 var commonWords = [
@@ -14,13 +30,12 @@ var commonWords = [
   "come","made","may","part"
 ];
 
-// Create a function that choses a random word from `commonWords` and returns it
+
 var chooseRandomWord = function(array) {
   return commonWords[Math.floor(Math.random() *(commonWords.length - 1))];
 }
 
 var chosenWord = chooseRandomWord(commonWords);
-// console.log(chosenWord);
 var counter = 10;
 var triedCharacters = [];
 var correctCharacters = [];
@@ -33,26 +48,21 @@ var checkForCharacter = function(character) {
     var guess = prompt("pick a friggin letter, punk").toLowerCase();
     triedCharacters.push(guess);
     console.log(chosenWord);
-      if(chosenWord.indexOf(guess) != -1) {
+      if(guess.length != 1) {
+      alert("Try typing in ONE letter");
+      }
+      else if(chosenWord.indexOf(guess) != -1) {
         correctCharacters.push(guess);
         result = true;
         index = chosenWord.indexOf(guess);
         chosenWord = chosenWord.slice(0 , index) + chosenWord.slice(index+1);
       }
       if(chosenWord.length === 0) {
-        console.log("You guessed it");
+        alert("You guessed it");
         break;
       }
-      console.log("You've tried: " + triedCharacters);
-      console.log("The word contains: " + correctCharacters);
+      alert("You've tried: " + triedCharacters, "The word contains: " + correctCharacters);
     }
   }
 
 checkForCharacter();
-  // The function should check the `chosenWord` for that character
-  // The function should return true if the character is in the given word
-  // The function should return false if the character is not in the given word
-  // The function should only be able to return true or false a certain number of times (the number stored in the `counter` variable)
-  // The function should store and console.log every letter that has been passed to this function in the `triedCharacters` array
-  // The function should store and console.log every letter in `chosenWord` that has been passed to this function in the `correctCharacters` array
-  // If every letter in `chosenWord` word has been passed to this function, console.log "you guessed it"
