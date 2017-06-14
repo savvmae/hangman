@@ -1,19 +1,7 @@
-var one = document.querySelector('.one');
-var two = document.querySelector('.two');
-var three = document.querySelector('.three');
-var four = document.querySelector('.four');
-var five = document.querySelector('.five');
-var six = document.querySelector('.six');
-var seven = document.querySelector('.seven');
-var eight = document.querySelector('.eight');
-var nine = document.querySelector('.nine');
-var ten = document.querySelector('.ten');
-
-
-
-
-
-
+var wrongDisplay = document.querySelector('.wrong');
+var correctDisplay = document.querySelector('.right');
+var guessBox = document.querySelector('.guesses');
+var forUser = document.querySelector('.title');
 // Here are the 100 most popular words in English, as totally
 // stolen from here: https://gist.github.com/gravitymonkey/2406023
 var commonWords = [
@@ -29,8 +17,6 @@ var commonWords = [
   "who","oil","its","now","find","long","down","day","did","get",
   "come","made","may","part"
 ];
-
-
 var chooseRandomWord = function(array) {
   return commonWords[Math.floor(Math.random() *(commonWords.length - 1))];
 }
@@ -39,30 +25,40 @@ var chosenWord = chooseRandomWord(commonWords);
 var counter = 10;
 var triedCharacters = [];
 var correctCharacters = [];
+var chosenWordDiced = chosenWord;
 
-// Create a function that accepts a single character argument
-var checkForCharacter = function(character) {
+function reset(){
+  document.getElementsByName('input')[0].value = "";
+  document.getElementsByName('input')[0].placeholder = "Pick a friggin' letter punk";
+}
 
-  for (i = 1; i <= counter; i ++) {
-    var result = false;
-    var guess = prompt("pick a friggin letter, punk").toLowerCase();
-    triedCharacters.push(guess);
-    console.log(chosenWord);
-      if(guess.length != 1) {
-      alert("Try typing in ONE letter");
+guessBox.addEventListener('keydown', function(event){
+  for (i = 0; i <= counter; i ++){
+    if (event.keyCode === 13) {
+      var guess = guessBox.value;
+      triedCharacters.push(guess);
+      wrongDisplay.textContent = "Incorrect Guesses: " + triedCharacters;
+      correctDisplay.textContent = "The Magic Word Contains: " + correctCharacters;
+      console.log(guess);
+        if(guess.length != 1) {
+        forUser.textContent = "Try entering 1 letter.";
+        reset();
+        }
+        else if(chosenWord.indexOf(guess) != -1) {
+          correctCharacters.push(guess);
+          index = chosenWordDiced.indexOf(guess);
+          chosenWordDiced = chosenWordDiced.slice(0 , index) + chosenWordDiced.slice(index+1);
+          reset();
+        }
+        if(chosenWordDiced.length === 0) {
+          forUser.textContent = "You guessed it! The word is " + chosenWord;
+
+          break;
+        }
+
       }
-      else if(chosenWord.indexOf(guess) != -1) {
-        correctCharacters.push(guess);
-        result = true;
-        index = chosenWord.indexOf(guess);
-        chosenWord = chosenWord.slice(0 , index) + chosenWord.slice(index+1);
-      }
-      if(chosenWord.length === 0) {
-        alert("You guessed it");
-        break;
-      }
-      alert("You've tried: " + triedCharacters, "The word contains: " + correctCharacters);
+
     }
-  }
+  });
 
-checkForCharacter();
+// checkForCharacter();
