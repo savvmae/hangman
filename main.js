@@ -22,7 +22,7 @@ var chooseRandomWord = function(array) {
 }
 
 var chosenWord = chooseRandomWord(commonWords);
-var counter = 10;
+var counter = 0;
 var triedCharacters = [];
 var correctCharacters = [];
 var chosenWordDiced = chosenWord;
@@ -33,12 +33,10 @@ function reset(){
 }
 
 guessBox.addEventListener('keydown', function(event){
-  for (i = 0; i <= counter; i ++){
+  if (counter < 10){
     if (event.keyCode === 13) {
       var guess = guessBox.value;
-      triedCharacters.push(guess);
-      wrongDisplay.textContent = "Incorrect Guesses: " + triedCharacters;
-      correctDisplay.textContent = "The Magic Word Contains: " + correctCharacters;
+      counter += 1;
       console.log(guess);
         if(guess.length != 1) {
         forUser.textContent = "Try entering 1 letter.";
@@ -48,17 +46,25 @@ guessBox.addEventListener('keydown', function(event){
           correctCharacters.push(guess);
           index = chosenWordDiced.indexOf(guess);
           chosenWordDiced = chosenWordDiced.slice(0 , index) + chosenWordDiced.slice(index+1);
+          forUser.textContent = "You got a letter!";
+          correctDisplay.textContent = "The Magic Word Contains: " + correctCharacters;
           reset();
         }
-        if(chosenWordDiced.length === 0) {
-          forUser.textContent = "You guessed it! The word is " + chosenWord;
-
-          break;
+        else if(chosenWord.indexOf(guess) === -1) {
+          triedCharacters.push(guess);
+          forUser.textContent = "Nope, try again!";
+          wrongDisplay.textContent = "Incorrect Guesses: " + triedCharacters;
+          reset();
         }
-
+      if(chosenWordDiced.length === 0) {
+        forUser.textContent = "You guessed it! The word is " + chosenWord;
+        counter = 10;
+        }
       }
-
     }
+  else {
+    forUser.textContent = "You're all out of guesses, the word was " + chosenWord;
+  }
   });
 
 // checkForCharacter();
