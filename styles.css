@@ -4,7 +4,94 @@ html, body {
 * {
   box-sizing: border-box;
 }
+html {
+  background-image: url('./images/chalkboard.jpeg');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 body {
+  background-image: url('./images/chalkboard.jpeg');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+
+.background1 {
+  background-image: url('./images/chalkboard1.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+ .background2 {
+  background-image: url('./images/chalkboard2.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+ .background3 {
+  background-image: url('./images/chalkboard3.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+ .background4 {
+  background-image: url('./images/chalkboard4.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background5 {
+  background-image: url('./images/chalkboard5.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background6 {
+  background-image: url('./images/chalkboard6.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background7 {
+  background-image: url('./images/chalkboard7.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background8 {
+  background-image: url('./images/chalkboard8.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background9 {
+  background-image: url('./images/chalkboard9.png');
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0px;
+}
+.background10 {
   background-image: url('./images/chalkboard10.png');
   background-position: bottom right;
   background-size: cover;
@@ -12,6 +99,7 @@ body {
   position: relative;
   margin: 0px;
 }
+
 .white-font-large {
   font-size: 60px;
   font-family: 'Bangers', 'sans-serif';
