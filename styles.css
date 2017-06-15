@@ -17,6 +17,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   margin: 0px;
+  text-shadow: 4px 2px 2px rgba(150, 150, 150, 0.82);
 }
 
 .background1 {
@@ -99,7 +100,12 @@ body {
   position: relative;
   margin: 0px;
 }
-
+.title {
+  margin: 1% auto;
+  position: relative;
+  width: 75%;
+  text-align: center;
+}
 .white-font-large {
   font-size: 60px;
   font-family: 'Bangers', 'sans-serif';
@@ -137,25 +143,43 @@ body {
   width: 100%;
 }
 .wrong, .right {
-  width: 40%;
+  width: 45%;
   height: 100%;
   padding: 20px;
 }
-.title {
-  margin: 1% auto;
-  position: relative;
-  width: 75%;
-  text-align: center;
+.right {
+  display: flex;
+  flex-direction: column;
+}
+.letter {
+  margin-left: 10px;
+  height: 60px;
+  width: 40px;
+}
+.unguessed {
+  border-bottom: 3px solid white;
+  height: 10px;
+  width: 35px;
+  margin-left: 10px;
+}
+.letter-holder, .unguessed-holder {
+  display: flex;
+  flex-direction: row;
+}
+.disappear {
+  opacity: 0;
 }
 input {
   border: none;
   background-color: rgba(0, 0, 0, 0);
   width: 75%;
   height: 100%;
+  text-shadow: 4px 2px 2px rgba(150, 150, 150, 0.82);
 }
 input::-webkit-input-placeholder {
   color: white;
   font-family: 'Bangers', 'sans-serif';
+  text-shadow: 4px 2px 2px rgba(150, 150, 150, 0.82);
 }
 .guesses:focus {
   outline:none;

@@ -3,8 +3,9 @@ var correctDisplay = document.querySelector('.right');
 var guessBox = document.querySelector('.guesses');
 var forUser = document.querySelector('.title');
 var body = document.querySelector('body');
-// Here are the 100 most popular words in English, as totally
-// stolen from here: https://gist.github.com/gravitymonkey/2406023
+var letterHolder = document.querySelector('.letter-holder');
+var unguessedHolder = document.querySelector('.unguessed-holder');
+
 var commonWords = [
   "the","of","and","a","to","in","is","you","that","it","he",
   "was","for","on","are","as","with","his","they","I","at","be",
@@ -24,11 +25,13 @@ var chooseRandomWord = function(array) {
 }
 
 var chosenWord = chooseRandomWord(commonWords);
+var correctCharacters = chosenWord.split("");
+console.log(correctCharacters);
 var counter = 0;
 var wrongGuessCount = 0;
 var triedCharacters = [];
-var correctCharacters = [];
 var chosenWordDiced = chosenWord;
+var arrayOfLetterDivs = [];
 
 function reset(){
   document.getElementsByName('input')[0].value = "";
@@ -52,8 +55,21 @@ function changeBackground(n) {
   var currentBackGround = backgroundClasses[n - 1];
   console.log(currentBackGround);
   body.setAttribute('class',currentBackGround);
-
 }
+(function letterToggle(word) {
+  for (i = 0; i < word.length; i ++) {
+    var letterDiv = document.createElement('div');
+    var unguessedLetterDiv = document.createElement('div');
+    var letter = word[i];
+    arrayOfLetterDivs.push(letterDiv);
+    letterDiv.textContent = letter;
+    letterDiv.setAttribute('class', 'letter disappear');
+    unguessedLetterDiv.setAttribute('class', 'unguessed');
+    letterHolder.appendChild(letterDiv);
+    unguessedHolder.appendChild(unguessedLetterDiv);
+
+  }
+})(correctCharacters);
 
 guessBox.addEventListener('keydown', function(event){
   if (wrongGuessCount < 10){
@@ -69,7 +85,12 @@ guessBox.addEventListener('keydown', function(event){
           index = chosenWordDiced.indexOf(guess);
           chosenWordDiced = chosenWordDiced.slice(0 , index) + chosenWordDiced.slice(index+1);
           forUser.textContent = "You got a letter!";
-          correctDisplay.textContent = "The Magic Word Contains: " + correctCharacters;
+          for (i = 0; i < arrayOfLetterDivs.length; i ++) {
+            var currentLetter = arrayOfLetterDivs[i].textContent;
+            if (currentLetter.indexOf(guess) != -1){
+            arrayOfLetterDivs[i].setAttribute('class', 'letter');
+            }
+          }
           reset();
         }
         else if(chosenWord.indexOf(guess) === -1) {
@@ -81,13 +102,13 @@ guessBox.addEventListener('keydown', function(event){
           reset();
         }
       if(chosenWordDiced.length === 0) {
-        forUser.textContent = "You guessed it! The word is: " + chosenWord;
+        forUser.textContent = "You guessed it!";
         counter = 10;
         }
       }
     }
     if(wrongGuessCount === 10) {
-    forUser.textContent = "You're all out of guesses, the word was " + chosenWord;
+    forUser.textContent = "You're all out of guesses, the word was: " + chosenWord;
     document.getElementsByName('input')[0].placeholder = "Womp Womp";
   }
   });
