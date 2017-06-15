@@ -5,6 +5,7 @@ var forUser = document.querySelector('.title');
 var body = document.querySelector('body');
 var letterHolder = document.querySelector('.letter-holder');
 var unguessedHolder = document.querySelector('.unguessed-holder');
+var incorrectLetters = document.querySelector('.incorrect-letters');
 
 var commonWords = [
   "the","of","and","a","to","in","is","you","that","it","he",
@@ -39,7 +40,6 @@ function reset(){
 }
 
 function changeBackground(n) {
-  console.log(wrongGuessCount);
   var backgroundClasses = [
     'background1',
     'background2',
@@ -53,7 +53,6 @@ function changeBackground(n) {
     'background10',
   ];
   var currentBackGround = backgroundClasses[n - 1];
-  console.log(currentBackGround);
   body.setAttribute('class',currentBackGround);
 }
 (function letterToggle(word) {
@@ -80,11 +79,16 @@ guessBox.addEventListener('keydown', function(event){
         forUser.textContent = "Try entering 1 letter.";
         reset();
         }
-        else if(chosenWord.indexOf(guess) != -1) {
-          correctCharacters.push(guess);
-          index = chosenWordDiced.indexOf(guess);
-          chosenWordDiced = chosenWordDiced.slice(0 , index) + chosenWordDiced.slice(index+1);
-          forUser.textContent = "You got a letter!";
+        else if(chosenWordDiced.indexOf(guess) != -1) {
+          for(i = 0; i < chosenWord.length; i ++){
+            if(chosenWordDiced.indexOf(guess) != -1) {
+              index = chosenWordDiced.indexOf(guess);
+              console.log(index);
+              chosenWordDiced = chosenWordDiced.slice(0 , index) + chosenWordDiced.slice(index+1);
+              forUser.textContent = "You got a letter!";
+              console.log(chosenWordDiced);
+          }
+        }
           for (i = 0; i < arrayOfLetterDivs.length; i ++) {
             var currentLetter = arrayOfLetterDivs[i].textContent;
             if (currentLetter.indexOf(guess) != -1){
@@ -97,7 +101,7 @@ guessBox.addEventListener('keydown', function(event){
           wrongGuessCount += 1;
           triedCharacters.push(guess);
           forUser.textContent = "Nope, try again!";
-          wrongDisplay.textContent = "Incorrect Guesses: " + triedCharacters;
+          incorrectLetters.textContent = triedCharacters;
           changeBackground(wrongGuessCount);
           reset();
         }
