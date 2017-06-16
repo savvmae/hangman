@@ -11,6 +11,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
   margin: 0px;
+  background-position: 43% center;
 }
 body {
   background: url('./images/chalkboard.jpeg') no-repeat center center fixed;
@@ -20,6 +21,7 @@ body {
   background-size: cover;
   margin: 0px;
   text-shadow: 4px 2px 2px rgba(150, 150, 150, 0.82);
+  background-position: 43% center;
 }
 .background1 {
   background: url('./images/chalkboard1.png') no-repeat center center fixed;
@@ -27,6 +29,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
  .background2 {
   background-image: url('./images/chalkboard2.png');
@@ -34,6 +37,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
  .background3 {
   background-image: url('./images/chalkboard3.png');
@@ -41,6 +45,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
  .background4 {
   background-image: url('./images/chalkboard4.png');
@@ -48,6 +53,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background5 {
   background-image: url('./images/chalkboard5.png');
@@ -55,6 +61,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background6 {
   background-image: url('./images/chalkboard6.png');
@@ -62,6 +69,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background7 {
   background-image: url('./images/chalkboard7.png');
@@ -69,6 +77,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background8 {
   background-image: url('./images/chalkboard8.png');
@@ -76,6 +85,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background9 {
   background-image: url('./images/chalkboard9.png');
@@ -83,6 +93,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .background10 {
   background-image: url('./images/chalkboard10.png');
@@ -90,6 +101,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: 43% center;
 }
 .title {
   margin: 1% auto;
@@ -120,7 +132,7 @@ body {
 }
 .input-wrapper {
   width: 100%;
-  height: 20%;
+  height: 15%;
   display: flex;
   justify-content: center;
 }
@@ -171,4 +183,32 @@ input::-webkit-input-placeholder {
 }
 .guesses:focus {
   outline:none;
+}
+
+@media (min-width:1200px) {
+  .white-font-large {
+    font-size: 70px;
+  }
+  .input-wrapper {
+  padding-top: 50px;
+  height: 25%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px){
+  .input-wrapper {
+    padding-top: 100px;
+    height: 25%;
+  }
+  .guessed {
+    padding-top: 30px;
+  }
+}
+@media (min-width: 320px) and (max-width: 768) {
+  .white-font-large {
+    font-size: 90px;
+  }
+  .guessed {
+    padding-top: 80px;
+  }
+
 }
