@@ -6,6 +6,8 @@ var body = document.querySelector('body');
 var letterHolder = document.querySelector('.letter-holder');
 var unguessedHolder = document.querySelector('.unguessed-holder');
 var incorrectLetters = document.querySelector('.incorrect-letters');
+// var guessedBox = document.querySelector('.guessed');
+// fix this.
 
 var commonWords = [
   "the","of","and","a","to","in","is","you","that","it","he",
@@ -106,13 +108,18 @@ guessBox.addEventListener('keydown', function(event){
           reset();
         }
       if(chosenWordDiced.length === 0) {
-        forUser.textContent = "You guessed it!";
+        forUser.textContent = "This is fight night and IIIIII aaaaaaaam the kiiiiiiiing!";
+        body.setAttribute('class', 'victory-background');
+        document.getElementsByName('input')[0].placeholder = "Refresh to play again";
         counter = 10;
         }
       }
     }
     if(wrongGuessCount === 10) {
-    forUser.textContent = "You're all out of guesses, the word was: " + chosenWord;
-    document.getElementsByName('input')[0].placeholder = "Womp Womp";
+    forUser.textContent = "Why couldn't you just put the bunny back in the box?";
+    document.getElementsByName('input')[0].placeholder = "";
+    document.getElementsByName('input')[0].placeholder = "The word was: " + chosenWord;
+    // guessedBox.setAttribute('class', 'disappear');
+    // need to fix this.
   }
   });

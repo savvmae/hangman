@@ -96,13 +96,21 @@ body {
   background-position: 43% center;
 }
 .background10 {
-  background-image: url('./images/chalkboard10.png');
+  background-image: url('./images/giphy.gif');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-position: 43% center;
 }
+.victory-background {
+  background-image: url('./images/victory.gif');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+//fix size of gif issue, creates scroll at bottom
 .title {
   margin: 1% auto;
   position: relative;
